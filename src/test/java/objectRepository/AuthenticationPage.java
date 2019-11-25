@@ -19,6 +19,8 @@ public class AuthenticationPage {
     @FindBy(xpath = "//button[@id='SubmitCreate']")
     WebElement createAccountButton;
 
+
+
     public WebElement emailInput() {
         return emailInput;
     }
