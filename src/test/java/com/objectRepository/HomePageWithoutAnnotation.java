@@ -1,4 +1,4 @@
-package objectRepository;
+package com.objectRepository;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
