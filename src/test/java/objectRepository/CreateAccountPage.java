@@ -1,5 +1,6 @@
 package objectRepository;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,10 +11,29 @@ public class CreateAccountPage {
 
     public CreateAccountPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
+    By name = By.id("customer_firstname");
+
+    public WebElement getName() {
+        return driver.findElement(name);
+    }
+
+    /*
+    @FindBy(xpath = "//input[@id='customer_lastname']")
+    WebElement lastName;
+
+    public WebElement lastName() {
+        return lastName;
+    } */
+
+    /*
     @FindBy(xpath = "//div[@id='uniform-id_gender1']")
     WebElement title;
+
+    @FindBy(xpath = "//input[@id='email_create']")
+    WebElement emailInput;
 
     @FindBy(xpath = "//input[@id='customer_firstname']")
     WebElement name;
@@ -78,91 +98,93 @@ public class CreateAccountPage {
     @FindBy(xpath = "//button[@id='submitAccount']")
     WebElement registerButton;
 
-    public WebElement Title() {
+    public WebElement fillTitle() {
         return title;
     }
 
-    public WebElement Name() {
+    public WebElement fillName() {
         return name;
     }
 
-    public WebElement LastName() {
+    public WebElement fillLastName() {
         return lastName;
     }
 
-    public WebElement Email() {
+    public WebElement fillEmail() {
         return email;
     }
 
-    public WebElement Password() {
+    public WebElement fillPassword() {
         return password;
     }
 
-    public WebElement Days() {
+    public WebElement fillDays() {
         return days;
     }
 
-    public WebElement Months() {
+    public WebElement fillMonths() {
         return months;
     }
 
-    public WebElement Years() {
+    public WebElement fillYears() {
         return years;
     }
 
-    public WebElement AddressName() {
+    public WebElement fillAddressName() {
         return addressName;
     }
 
-    public WebElement AddressLastname() {
+    public WebElement fillAddressLastname() {
         return addressLastname;
     }
 
-    public WebElement AddressCompany() {
+    public WebElement fillAddressCompany() {
         return addressCompany;
     }
 
-    public WebElement Address1() {
+    public WebElement fillAddress1() {
         return address1;
     }
 
-    public WebElement Address2() {
+    public WebElement fillAddress2() {
         return address2;
     }
 
-    public WebElement AddressCity() {
+    public WebElement fillAddressCity() {
         return addressCity;
     }
 
-    public WebElement AddressState() {
+    public WebElement fillAddressState() {
         return addressState;
     }
 
-    public WebElement AddressZip() {
+    public WebElement fillAddressZip() {
         return addressZip;
     }
 
-    public WebElement AddressCountry() {
+    public WebElement fillAddressCountry() {
         return addressCountry;
     }
 
-    public WebElement AdditionalInformation() {
+    public WebElement fillAdditionalInformation() {
         return additionalInformation;
     }
 
-    public WebElement AddressHomePhone() {
+    public WebElement fillAddressHomePhone() {
         return addressHomePhone;
     }
 
-    public WebElement AddressMobilePhone() {
+    public WebElement fillAddressMobilePhone() {
         return addressMobilePhone;
     }
 
-    public WebElement AddressAlias() {
+    public WebElement fillAddressAlias() {
         return addressAlias;
     }
 
-    public WebElement RegisterButton() {
+    public WebElement fillRegisterButton() {
         return registerButton;
     }
+
+     */
 }
