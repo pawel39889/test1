@@ -1,12 +1,10 @@
 package com.dataImport;
 
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.HashMap;
 import java.util.Set;
-
 
 public class DataContainer {
 
@@ -16,26 +14,28 @@ public class DataContainer {
         dataProperties.load(propertiesFileLocation);
         HashMap<String, String> dataFromFile = new HashMap<String, String>();
 
-        //Converting data from properties file
-        Set<String> keys = dataFromFile.keySet();
+        dataFromFile = DataContainer.propertiesToHashmap(dataProperties);
+    }
 
+    public static HashMap<String, String> propertiesToHashmap(Properties dataProperties) {
+        HashMap<String, String> tmpHashMap = new HashMap<String, String>();
+        Set<Object> keys = dataProperties.keySet();
 
-        for (String tmpString : keys) {
-            dataFromFile.put(tmpString, dataProperties.getProperty(tmpString));
+        for (Object tmpObject: keys) {
+            String key = (String) tmpObject;
+            String value = dataProperties.getProperty(key);
+            tmpHashMap.put(key, value);
         }
 
-        keys = dataFromFile.keySet();
+        //HaspMap test
+        Set<String> keysFromHashmap = tmpHashMap.keySet();
 
-        for (String tmpString1 : keys) {
-            System.out.println(tmpString1);
-            System.out.println(dataFromFile.get(tmpString1));
-        }
+            for (String stringFromHashMap : keysFromHashmap) {
+                System.out.println(stringFromHashMap);
+                System.out.println(tmpHashMap.get(stringFromHashMap));
+            }
 
-
-
-
-
-
-
+        return tmpHashMap;
     }
 }
+
