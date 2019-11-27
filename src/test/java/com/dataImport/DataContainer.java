@@ -8,34 +8,35 @@ import java.util.Set;
 
 public class DataContainer {
 
-    public static void gatherDataFromFile(String filePath) throws IOException {
-        Properties dataProperties = new Properties();
-        FileInputStream propertiesFileLocation = new FileInputStream(filePath);
-        dataProperties.load(propertiesFileLocation);
-        HashMap<String, String> dataFromFile = new HashMap<String, String>();
+  public static HashMap getPropertiesHashMap(String filePath) throws IOException {
+    Properties dataProperties = new Properties();
+    FileInputStream propertiesFileLocation = new FileInputStream(filePath);
+    dataProperties.load(propertiesFileLocation);
+    HashMap<String, String> dataFromProperties = new HashMap<String, String>();
 
-        dataFromFile = DataContainer.propertiesToHashmap(dataProperties);
+    DataContainer.convertPropertiesToHashmap(dataProperties, dataFromProperties);
+
+    return dataFromProperties;
+  }
+
+  public static void convertPropertiesToHashmap(Properties dataProperties, HashMap referenceToHashMap) {
+    HashMap<String, String> dataFromProperties = referenceToHashMap;
+    Set<Object> keys = dataProperties.keySet();
+
+    for (Object tmpObject : keys) {
+      String key = (String) tmpObject;
+      String value = dataProperties.getProperty(key);
+      dataFromProperties.put(key, value);
     }
 
-    public static HashMap<String, String> propertiesToHashmap(Properties dataProperties) {
-        HashMap<String, String> tmpHashMap = new HashMap<String, String>();
-        Set<Object> keys = dataProperties.keySet();
+    /* Additional internal method for testing HaspMap
+         Set<String> keysFromHashmap = dataFromProperties.keySet();
 
-        for (Object tmpObject: keys) {
-            String key = (String) tmpObject;
-            String value = dataProperties.getProperty(key);
-            tmpHashMap.put(key, value);
-        }
+         for (String stringFromHashMap : keysFromHashmap) {
+           System.out.println(stringFromHashMap);
+           System.out.println(dataFromProperties.get(stringFromHashMap));
+         }
+    */
 
-        //HaspMap test
-        Set<String> keysFromHashmap = tmpHashMap.keySet();
-
-            for (String stringFromHashMap : keysFromHashmap) {
-                System.out.println(stringFromHashMap);
-                System.out.println(tmpHashMap.get(stringFromHashMap));
-            }
-
-        return tmpHashMap;
-    }
+  }
 }
-
