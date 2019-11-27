@@ -20,10 +20,14 @@ public class AccountPage {
 
   public boolean loginVerification(HashMap data) {
     String username = data.get("name") + " " + data.get("lastName");
-    if (customerAccountLink.getText().equals(username)) {
-      return true;
+
+    if (!driver.getCurrentUrl().equals((String) data.get("accountPageLink"))) {
+      return false;
+    }
+    if (!customerAccountLink.getText().equals(username)) {
+      return false;
     }
 
-    return false;
+    return true;
   }
 }
