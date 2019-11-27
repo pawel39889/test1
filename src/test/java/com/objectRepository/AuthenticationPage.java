@@ -16,15 +16,32 @@ public class AuthenticationPage {
     PageFactory.initElements(driver, this);
   }
 
+  //CREATE AN ACCOUNT section
   @FindBy(xpath = "//input[@id='email_create']")
   WebElement emailInput;
 
   @FindBy(xpath = "//button[@id='SubmitCreate']")
   WebElement createAccountButton;
 
+  //ALREADY REGISTERED section
+  @FindBy (xpath = "//input[@id='email']")
+  WebElement emailForLogin;
+
+  @FindBy (xpath = "//input[@id='passwd']")
+  WebElement password;
+
+  @FindBy (xpath = "//button[@id='SubmitLogin']")
+  WebElement signInButton;
+
   public void fillEmailClickButton(HashMap data) {
     fillEmailInput((String) data.get("email"));
     clickCreateAccountButton();
+  }
+
+  public void login(HashMap data) {
+    fillLoginEmail((String) data.get("email"));
+    fillPassword((String) data.get("password"));
+    clickSignInButton();
   }
 
   public void fillEmailInput(String email) {
@@ -34,4 +51,18 @@ public class AuthenticationPage {
   public void clickCreateAccountButton() {
     createAccountButton.click();
   }
+
+  public void fillLoginEmail(String email) {
+    emailForLogin.sendKeys(email);
+  }
+
+  public void fillPassword(String password) {
+    this.password.sendKeys(password);
+  }
+
+  public void clickSignInButton() {
+    signInButton.click();
+  }
+
+
 }
