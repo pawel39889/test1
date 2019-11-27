@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
-public class Registration {
+public class RegistrationWithValidData {
 
   private WebDriver driver;
 
@@ -50,7 +50,7 @@ public class Registration {
 
     // Navigate to Sign in Page
     HomePage homePage = new HomePage(driver);
-    homePage.signInButton().click();
+    homePage.clickSignInButton();
 
     // Authentication Page
     AuthenticationPage authenticationPage = new AuthenticationPage(driver);

@@ -49,7 +49,7 @@ public class RegistrationWithAlreadyUsedData {
 
     // Navigate to Sign in Page
     HomePage homePage = new HomePage(driver);
-    homePage.signInButton().click();
+    homePage.clickSignInButton();
 
     // Authentication Page
     AuthenticationPage authenticationPage = new AuthenticationPage(driver);

@@ -11,7 +11,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
@@ -48,7 +47,7 @@ public class LoginWithValidData {
 
     // Navigate to Sign in Page
     HomePage homePage = new HomePage(driver);
-    homePage.signInButton().click();
+    homePage.clickSignInButton();
 
     // Authentication Page
     AuthenticationPage authenticationPage = new AuthenticationPage(driver);
