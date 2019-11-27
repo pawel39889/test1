@@ -88,24 +88,24 @@ public class CreateAccountPage {
 
   // Method fills all form
   public void fillForm(HashMap formData) {
-    HashMap data = formData;
-
-
-    fillTitle((String) data.get("title"));
-    fillFirstNameCustomer((String) data.get("name"));
-//    fillLastNameCustomer("Kozak");
-//    this.fillEmail("p@p.pl");
-//    fillPassword("asdasd123");
-//    fillDate("11", "November", "1980");
-//    fillAddressName("Janusz");
-//    fillAddressLastname("Kozak");
-//    fillCompanyName("Mustaffa");
-//    fillAddress1("ul. Nadbystrzycka");
-//    fillCity("Lublin");
-//    fillState("Alaska");
-//    fillZipCode("80210");
-//    fillCountry("UnitedStates");
-//    fillMobilePhone("500 500 500");
+    fillTitle((String) formData.get("title"));
+    fillFirstNameCustomer((String) formData.get("name"));
+    fillLastNameCustomer((String) formData.get("lastName"));
+    this.fillEmail((String) formData.get("email"));
+    fillPassword((String) formData.get("password"));
+    fillDate(
+        (String) formData.get("days"),
+        (String) formData.get("months"),
+        (String) formData.get("years"));
+    fillAddressName((String) formData.get("addressName"));
+    fillAddressLastname((String) formData.get("addressLastname"));
+    fillCompanyName((String) formData.get("addressCompany"));
+    fillAddress1((String) formData.get("address1"));
+    fillCity((String) formData.get("addressCity"));
+    fillState((String) formData.get("addressState"));
+    fillZipCode((String) formData.get("addressZip"));
+    fillCountry((String) formData.get("addressCountry"));
+    fillMobilePhone((String) formData.get("addressMobilePhone"));
   }
 
   // Methods to interact with all elements
@@ -123,7 +123,10 @@ public class CreateAccountPage {
   }
 
   public void fillEmail(String email) {
-    this.email.sendKeys(email);
+   if (!this.email.getText().equals(email)) {
+      this.email.clear();
+      this.email.sendKeys(email);
+    }
   }
 
   public void fillPassword(String password) {
