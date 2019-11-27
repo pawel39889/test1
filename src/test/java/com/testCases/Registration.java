@@ -13,7 +13,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
@@ -55,8 +54,7 @@ public class Registration {
 
     // Authentication Page
     AuthenticationPage authenticationPage = new AuthenticationPage(driver);
-    authenticationPage.emailInput().sendKeys("asfojois@oaisdjf.pl");
-    authenticationPage.createAccountButton().click();
+    authenticationPage.fillEmailClickButton(dataFromProperties);
 
     // Create Account Page
     CreateAccountPage createAccountPage = new CreateAccountPage(driver);
