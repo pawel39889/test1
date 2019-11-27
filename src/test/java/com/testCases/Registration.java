@@ -3,11 +3,11 @@ package com.testCases;
 import com.dataImport.DataContainer;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
-import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.FileNotFoundException;
@@ -19,24 +19,25 @@ public class Registration {
 
   private WebDriver driver;
 
-  @BeforeClass
+  @BeforeTest
   public static void setupClass() {
+    System.out.println("BeforeClass");
     WebDriverManager.chromedriver().setup();
   }
 
-  @Before
+  @BeforeClass
   public void setupTest() {
+    System.out.println("before");
     driver = new ChromeDriver();
   }
 
-  @After
+  @AfterTest
   public void teardown() {
+    System.out.println("after");
     if (driver != null) {
       driver.quit();
     }
   }
-
-  //public Registration() throws FileNotFoundException {}
 
   @Test
   public void registration() throws InterruptedException, IOException {
