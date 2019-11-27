@@ -6,18 +6,17 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
-    private WebDriver driver;
+  private WebDriver driver;
 
-    public HomePage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
+  public HomePage(WebDriver driver) {
+    this.driver = driver;
+    PageFactory.initElements(driver, this);
+  }
 
-    @FindBy(xpath = "//a[@class='login']")
-    WebElement signInButton;
+  @FindBy(xpath = "//a[@class='login']")
+  WebElement signInButton;
 
-    public WebElement signInButton() {
-        return signInButton;
-    }
-
+  public void clickSignInButton() {
+    signInButton.click();
+  }
 }
