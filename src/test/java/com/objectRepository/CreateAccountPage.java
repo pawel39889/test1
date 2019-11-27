@@ -106,6 +106,7 @@ public class CreateAccountPage {
     fillZipCode((String) formData.get("addressZip"));
     fillCountry((String) formData.get("addressCountry"));
     fillMobilePhone((String) formData.get("addressMobilePhone"));
+    clickRegisterButton();
   }
 
   // Methods to interact with all elements
