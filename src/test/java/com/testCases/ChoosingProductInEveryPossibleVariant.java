@@ -1,10 +1,7 @@
 package com.testCases;
 
 import com.dataImport.DataContainer;
-import com.objectRepository.AccountPage;
-import com.objectRepository.AuthenticationPage;
-import com.objectRepository.HomePage;
-import com.objectRepository.TopMenu;
+import com.objectRepository.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -63,6 +60,11 @@ public class ChoosingProductInEveryPossibleVariant {
     // Top Menu click
       TopMenu topMenu = new TopMenu(driver);
       topMenu.clickWomenButton();
+
+      // Product list
+      ProductList productList = new ProductList(driver);
+      Assert.assertTrue(productList.clickElementFromProductList(dataFromProperties));
+
 
     Thread.sleep(5000);
   }
