@@ -46,26 +46,29 @@ public class ChoosingProductInEveryPossibleVariant {
     driver.get("http://automationpractice.com/index.php");
 
     // Navigate to Sign in Page
-    HomePage homePage = new HomePage(driver);
-    homePage.clickSignInButton();
+        HomePage homePage = new HomePage(driver);
+        homePage.clickSignInButton();
 
     // Authentication Page
-    AuthenticationPage authenticationPage = new AuthenticationPage(driver);
-    authenticationPage.login(dataFromProperties);
+        AuthenticationPage authenticationPage = new AuthenticationPage(driver);
+        authenticationPage.login(dataFromProperties);
 
     // Account Page
-    AccountPage accountPage = new AccountPage(driver);
-    Assert.assertTrue(accountPage.loginVerification(dataFromProperties));
+        AccountPage accountPage = new AccountPage(driver);
+        Assert.assertTrue(accountPage.loginVerification(dataFromProperties));
 
     // Top Menu click
-      TopMenu topMenu = new TopMenu(driver);
-      topMenu.clickWomenButton();
+    TopMenu topMenu = new TopMenu(driver);
+    topMenu.clickWomenButton();
 
-      // Product list
-      ProductList productList = new ProductList(driver);
-      Assert.assertTrue(productList.clickElementFromProductList(dataFromProperties));
+    // Product list
+    ProductList productList = new ProductList(driver);
+    Assert.assertTrue(productList.clickElementFromProductList(dataFromProperties, driver));
 
+    // Product details - choosing all variants
+    ProductDetails productDetails = new ProductDetails(driver);
+    productDetails.chooseAllVariantOfProduct();
 
-    Thread.sleep(5000);
+    Thread.sleep(1500);
   }
 }
