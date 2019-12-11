@@ -31,7 +31,13 @@ public class ProductList {
   @FindBy(xpath = "//a[@class='product-name']")
   WebElement item;
 
-  public boolean clickElementFromProductList(HashMap data, WebDriver driver) {
+  @FindBy (xpath = "//a[@class='blockbestsellers']")
+  WebElement bestSellersButton;
+
+  @FindBy (xpath = "//ul[@id='blockbestsellers']/li")
+  List<WebElement> bestsellersList;
+
+  public boolean clickOnProductFromListed(HashMap data, WebDriver driver) {
     boolean containsName;
     boolean containsPrice;
 
@@ -58,6 +64,27 @@ public class ProductList {
 
     }
 
+    return false;
+  }
+
+  public void bestSellersButtonclick() {
+    this.bestSellersButton.click();
+  }
+
+  public String chooseProductFromBestsellersList(int number) {
+    String productText = this.bestsellersList.get(number - 1).getText();
+    String productTextSplited[] = productText.split("\n");
+    return productTextSplited[0];
+
+//
+  }
+
+  public boolean productListContainsProduct(String productName) {
+    for (WebElement product : productsList) {
+      if (product.getText().contains(productName)) {
+        return true;
+      }
+    }
     return false;
   }
 }

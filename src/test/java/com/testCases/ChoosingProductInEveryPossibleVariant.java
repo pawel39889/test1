@@ -63,7 +63,7 @@ public class ChoosingProductInEveryPossibleVariant {
 
     // Product list
     ProductList productList = new ProductList(driver);
-    Assert.assertTrue(productList.clickElementFromProductList(dataFromProperties, driver));
+    Assert.assertTrue(productList.clickOnProductFromListed(dataFromProperties, driver));
 
     // Product details - choosing all variants
     ProductDetails productDetails = new ProductDetails(driver);

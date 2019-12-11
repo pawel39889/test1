@@ -27,6 +27,12 @@ public class TopMenu {
   @FindBy(xpath = "//img[@class='logo img-responsive']")
   WebElement topLogo;
 
+  @FindBy(xpath = "//input[@id='search_query_top']")
+  WebElement searchBar;
+
+  @FindBy(xpath = "//button[@name='submit_search']")
+  WebElement searchButton;
+
   // Top menu methods
     public void clickWomenButton() {
         womenButton.click();
@@ -42,5 +48,14 @@ public class TopMenu {
 
     public void topLogoClick() {
       this.topLogo.click();
+    }
+
+    public void searchProduct(String productName) {
+      this.searchBar.sendKeys(productName);
+      searchButtonClick();
+    }
+
+    public void searchButtonClick() {
+      this.searchButton.click();
     }
 }
