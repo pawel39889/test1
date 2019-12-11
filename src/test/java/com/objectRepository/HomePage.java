@@ -16,7 +16,15 @@ public class HomePage {
   @FindBy(xpath = "//a[@class='login']")
   WebElement signInButton;
 
+  @FindBy(xpath = "//ul[@id='homefeatured']/li[1] //a[@itemprop='url']")
+//  @FindBy(xpath = "//ul[@id='homefeatured']/li[1] //a[@class='button ajax_add_to_cart_button btn btn-default']")
+  WebElement firstProduct;
+
   public void clickSignInButton() {
     signInButton.click();
+  }
+
+  public void firstProductClick() {
+    this.firstProduct.click();
   }
 }

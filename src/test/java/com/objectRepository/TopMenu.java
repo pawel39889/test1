@@ -24,6 +24,9 @@ public class TopMenu {
   @FindBy(xpath = "//a[@title='T-shirts']")
   WebElement tShirtsButton;
 
+  @FindBy(xpath = "//img[@class='logo img-responsive']")
+  WebElement topLogo;
+
   // Top menu methods
     public void clickWomenButton() {
         womenButton.click();
@@ -35,5 +38,9 @@ public class TopMenu {
 
     public void clickTShirtsButton() {
         tShirtsButton.click();
+    }
+
+    public void topLogoClick() {
+      this.topLogo.click();
     }
 }

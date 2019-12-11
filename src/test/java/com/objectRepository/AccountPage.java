@@ -26,7 +26,7 @@ public class AccountPage {
     }
     if (!customerAccountLink.getText().equals(username)) {
       return false;
-    }
+        }
 
     return true;
   }

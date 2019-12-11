@@ -1,6 +1,7 @@
 package com.objectRepository;
 
 import com.sun.xml.internal.ws.util.xml.CDATA;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,42 +13,51 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ProductList {
-    private WebDriver driver;
-    private PhantomReference data;
+  private WebDriver driver;
+  private PhantomReference data;
 
-    public ProductList(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+  public ProductList(WebDriver driver) {
+    this.driver = driver;
+    PageFactory.initElements(driver, this);
+  }
+
+  @FindBy(xpath = "//ul[@class='product_list grid row']/li")
+  List<WebElement> productsList;
+
+  // use only in reference to productsList items
+  @FindBy(xpath = "//a[@class='product-name']")
+  WebElement titleInsideProductList;
+
+  @FindBy(xpath = "//a[@class='product-name']")
+  WebElement item;
+
+  public boolean clickElementFromProductList(HashMap data, WebDriver driver) {
+    boolean containsName;
+    boolean containsPrice;
+
+
+    for (WebElement elementFromList : this.productsList) {
+      containsName = elementFromList.getText().contains((String) data.get("productName"));
+      containsPrice = elementFromList.getText().contains((String) data.get("productPrice"));
+
+      if (containsName && containsPrice) {
+        System.out.println(elementFromList.getText());
+        //        elementFromList.findElement(By.xpath("//a[@class='quick-view']")).click();
+        //        elementFromList.findElement(By.xpath("//a[@class='product_img_link']")).click();
+        //        elementFromList.findElement(By.xpath("//a[@class='button lnk_view btn
+        // btn-default']")).click();
+
+        int productId = productsList.indexOf(elementFromList) + 1;
+
+        String productUrl = "http://automationpractice.com/index.php?id_product=" + productId + "&controller=product";
+        System.out.println(productUrl);
+        driver.get(productUrl);
+        return true;
+      }
+
+
     }
 
-    @FindBy(xpath = "//ul[@class='product_list grid row']")
-    List<WebElement> productsList;
-
-    //use only in reference to productsList items
-    @FindBy(xpath = "//a[@class='product-name']")
-    WebElement titleInsideProductList;
-
-    @FindBy(xpath = "//a[@class='product-name']")
-    WebElement item;
-
-
-    public boolean clickElementFromProductList(HashMap data) {
-
-        for (WebElement elementFromList : this.productsList) {
-            if (!elementFromList.getText().contains((String) data.get("productName"))) {
-                if (!elementFromList.getText().contains((String) data.get("productPrice"))) {
-                    productsList.remove(elementFromList);
-                }
-            }
-        }
-
-        if (productsList.size() == 1) {
-            productsList.get(0).
-            return true;
-        }
-
-        return false;
-
-
-    }
+    return false;
+  }
 }
